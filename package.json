@@ -1,0 +1,33 @@
+{
+  "name": "henduoren_wechat",
+  "version": "0.0.0",
+  "description": "henduoren_wechat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/az402/henduoren_wechat.git"
+  },
+  "keywords": [
+    "wechat",
+    "henduoren",
+    "node.js",
+    "qqbot",
+    "candy"
+  ],
+  "author": "az402",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/az402/henduoren_wechat/issues"
+  },
+  "dependencies": {
+    "wechat": "*",
+    "duoshuo": "*",
+    "coffee-script": "*"
+  },
+  "devDependencies": {
+  },
+  "homepage": "https://github.com/az402/henduoren_wechat"
+}
