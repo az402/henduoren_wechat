@@ -25,7 +25,10 @@
   "dependencies": {
     "wechat": "*",
     "duoshuo": "*",
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "connect": "*",
+    "redis": "*",
+    "connect-redis": "*"
   },
   "devDependencies": {
   },
