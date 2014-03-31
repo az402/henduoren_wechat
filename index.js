@@ -10,7 +10,6 @@ var redis_ip = "woleige.ca",redis_port="6379";
 var tmpRes = "";
 var test = function(txt,res){
   request('http://drugs.dxy.cn/search/indication.htm?keyword='+txt,function(error,response,body){
-    console.log("get HTML");
     var $doc = $(body);
     console.log("$body done")
     var test = $doc.find("body");
@@ -25,7 +24,7 @@ var fuck=function(txt){
   jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt, [ "http://assets.dxycdn.com/core/jquery/1.7.2-min.js", "http://drugs.dxy.cn/search/indication.htm?keyword="+txt], function(errors, window) {
       var response = "" ;
       var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
-          response+=window.$(this).text().split("\d")[0];
+          response+=window.$(this).text().split(" ")[0];
       });
       tmpRes.reply(response);
   });
