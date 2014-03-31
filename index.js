@@ -25,7 +25,7 @@ var fuck=function(txt){
       var response = "治疗"+txt+"的药物有：" ;
       var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
           response+=window.$(this).text().replace(/\s/g,"");
-          response+="<br/>";
+          response+="\r\n";
       });
       tmpRes.reply(response);
   });
