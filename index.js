@@ -11,15 +11,11 @@ var redis_ip = "woleige.ca",redis_port="6379";
 var tmpRes = "";
 var test = function(txt,res){
   request('http://drugs.dxy.cn/search/indication.htm?keyword='+txt,function(error,response,body){
-    console.log(response);
-    console.log(body);
-    console.log(res);
     var $doc = $(body);
-    tmpRes.reply($doc.find("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a"))
+    var results = $doc.find("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
+    console.log(results);
     tmpRes.reply("222");
-
   })
-    //res("123321");
 }
 var app = express();
 app.use(express.query());
