@@ -29,11 +29,14 @@ var fuck=function(txt){
               var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
               console.log(list.length);
               var response = new Array(list.length);
+
+              console.log(list[0]);
               for(var i=0;i<list.length;i++){
                 console.log(list[i].text);
                 response[i]=list[i].text.split(" ")[0]; 
                 console.log(response[i]);
               }
+
               tmpRes.reply(response.join(' '));
            })
 
