@@ -11,7 +11,7 @@ var test = function(txt,res){
   request('http://www.baidu.com',function(error,response,body){
     console.log(response);
     console.log(body);
-    res.reply(body);
+    res.reply("123321");
   })
 }
 var app = express();
