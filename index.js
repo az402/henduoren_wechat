@@ -7,12 +7,13 @@ var request = require('request');
 
 var redis_ip = "woleige.ca",redis_port="6379";
 
+var tmpRes = "";
 var test = function(txt,res){
   request('http://www.baidu.com',function(error,response,body){
     console.log(response);
     console.log(body);
     console.log(res)
-    res("222");
+    tmpRes.reply("222");
   })
     //res("123321");
 }
@@ -35,7 +36,9 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
         //res.reply('hehe');
       console.log("test");
       //(function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
+      tmpRes = res ;
       test(info.Content,res);
+
       //res.reply(req.wxsession.text);
     }
 })));
