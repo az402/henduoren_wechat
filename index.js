@@ -27,9 +27,12 @@ var fuck=function(txt){
             'http://drugs.dxy.cn/search/indication.htm?keyword='+txt],
            function(errors,window){
               var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
+              console.log(list);
+              console.log(list.length);
               var response = new Array(list.length);
               for(var i=0;i<list.length;i++){
                 response[i]=list[i].text.split(" ")[0]; 
+                console.log(response[i]);
               }
               tmpRes.reply(response.join(' '));
            })
