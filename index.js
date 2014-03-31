@@ -26,7 +26,7 @@ var fuck=function(txt){
       var response = "" ;
       var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
           console.log("fuck -", window.$(this).text());
-          response+=window.$(this).text();
+          response+=window.$(this).text().split(" ")[0];
       });
       tmpRes.reply(response);
   });
