@@ -1,10 +1,21 @@
-var connect = require('connect');
 var wechat = require('wechat');
+var express     = require('express');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 
-var app = connect();
-app.use(connect.query());
-app.use(connect.cookieParser());
-app.use(connect.session({secret: 'keyboard cat', cookie: {maxAge: 60000}}));
+var redis_ip = "woleige.ca",redis_port="6379";
+
+
+var app = express();
+app.use(express.query());
+app.use(express.cookieParser());
+app.use(express.session({
+  secret: 'wefew',
+  store: new RedisStore({
+    host: redis_ip,
+    port: redis_port
+  }),
+}));
 app.use('/wechat', wechat('some token', wechat.text(function (info, req, res, next) {
   if (info.Content === 'list') {
       res.wait('view');
