@@ -9,6 +9,8 @@ var redis_ip = "woleige.ca",redis_port="6379";
 
 var test = function(txt,res){
   request('http://www.baidu.com',function(error,response,body){
+    console.log(response);
+    console.log(body);
     res.reply(body);
   })
 }
