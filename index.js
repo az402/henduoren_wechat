@@ -12,7 +12,7 @@ var test = function(txt,res){
     console.log(response);
     console.log(body);
     console.log(res)
-    res.reply("123321");
+    res("123321");
   })
 }
 var app = express();
@@ -33,7 +33,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     } else {
         //res.reply('hehe');
       console.log("test");
-      test(info.Content,res);
+      test(info.Content,function(txt){res.reply(txt);});
       //res.reply(req.wxsession.text);
     }
 })));
