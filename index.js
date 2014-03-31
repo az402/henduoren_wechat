@@ -10,7 +10,7 @@ var redis_ip = "woleige.ca",redis_port="6379";
 
 var tmpRes = "";
 var test = function(txt,res){
-  request('http://www.baidu.com',function(error,response,body){
+  request('http://drugs.dxy.cn/search/indication.htm?keyword='+txt,function(error,response,body){
     console.log(response);
     console.log(body);
     console.log(res)
