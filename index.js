@@ -1,3 +1,4 @@
+var configs = require('configs.json');
 var wechat = require('wechat');
 var express     = require('express');
 var session = require('express-session');
@@ -16,9 +17,9 @@ app.use(express.session({
     port: redis_port
   }),
 }));
-app.use('/wechat', wechat('some token', wechat.text(function (info, req, res, next) {
+app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, next) {
   if (info.Content === 'list') {
-      res.wait('view');
+      res.reply('view');
     } else {
         res.reply('hehe');
     }
