@@ -29,7 +29,7 @@ var fuck=function(txt){
               var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
               var response = new Array(list.length);
               for(var i=0;i<list.length;i++){
-                response[i]=list[i].html(); 
+                response[i]=list[i].text.split(" ")[0]; 
               }
               tmpRes.reply(response.join(' '));
            })
