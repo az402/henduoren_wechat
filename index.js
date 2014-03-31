@@ -31,8 +31,8 @@ var fuck=function(txt){
               var response = new Array(list.length);
 
               for(var i=0;i<list.length;i++){
-                console.log(list[i].Text);
-                response[i]=list[i].Text.split(" ")[0]; 
+                console.log(list[i].html());
+                response[i]=list[i].html().split(" ")[0]; 
                 console.log(response[i]);
               }
 
