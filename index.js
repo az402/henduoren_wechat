@@ -12,6 +12,7 @@ var tmpRes = "";
 var test = function(txt,res){
   request('http://drugs.dxy.cn/search/indication.htm?keyword='+txt,function(error,response,body){
     var $doc = $(body);
+    console.log("$body done")
     var test = $doc.find("body");
     console.log(test)
     var results = $doc.find("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
