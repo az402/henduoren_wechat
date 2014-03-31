@@ -31,7 +31,6 @@
     "coffee-script": "*",
     "request": "*",
     "eventproxy": "*",
-    "jquery": ">=2.1",
     "jsdom": "latest",
     "connect": "2.*",
     "connect-redis": "*"

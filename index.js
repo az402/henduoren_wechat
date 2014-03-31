@@ -4,8 +4,7 @@ var express     = require('express');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var request = require('request');
-var $ = require('jquery');
-
+var jsdom = require("jsdom");
 var redis_ip = "woleige.ca",redis_port="6379";
 
 var tmpRes = "";
@@ -21,15 +20,17 @@ var test = function(txt,res){
     tmpRes.reply("222");
   })
 }
-var fuck = function(txt){
 
-  $.get("http://drugs.dxy.cn/search/indication.htm?keyword="+txt,function(html){
-    console.log(html);
-    var $doc = $(html) ;
-    console.log("get DONE");
-  });
+var fuck=function(txt){
+  
+  jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt,['https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
+            'http://drugs.dxy.cn/search/indication.htm?keyword='+txt],
+           function(errors,window){
+            console.log(window.$("#doc").html());
+           })
 
 }
+
 var app = express();
 app.use(express.query());
 app.use(express.cookieParser());
