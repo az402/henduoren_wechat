@@ -12,8 +12,8 @@ var test = function(txt,res){
     console.log(response);
     console.log(body);
     console.log(res)
-    res("123321");
   })
+    res("123321");
 }
 var app = express();
 app.use(express.query());
