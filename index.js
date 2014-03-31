@@ -26,7 +26,9 @@ var fuck=function(txt){
   jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt,['https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
             'http://drugs.dxy.cn/search/indication.htm?keyword='+txt],
            function(errors,window){
-              var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
+              var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function(){
+                console.log("fuck -",$(this).text());
+              });
               console.log(list.length);
               var response = new Array(list.length);
 
