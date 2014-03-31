@@ -12,8 +12,9 @@ var test = function(txt,res){
     console.log(response);
     console.log(body);
     console.log(res)
+    res("222");
   })
-    res("123321");
+    //res("123321");
 }
 var app = express();
 app.use(express.query());
@@ -33,7 +34,8 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     } else {
         //res.reply('hehe');
       console.log("test");
-      (function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
+      //(function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
+      test(info.Content,res);
       //res.reply(req.wxsession.text);
     }
 })));
