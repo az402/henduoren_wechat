@@ -24,6 +24,7 @@ var test = function(txt,res){
 var fuck = function(txt){
 
   $.get("http://drugs.dxy.cn/search/indication.htm?keyword="+txt,function(html){
+    console.log(html);
     var $doc = $(html) ;
     console.log("get DONE");
   });
