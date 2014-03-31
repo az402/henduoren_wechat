@@ -19,10 +19,12 @@ app.use(express.session({
 }));
 app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, next) {
   if (info.Content === 'list') {
+      req.wxsession.text = 'sucess';
       res.reply('view');
     } else {
-        res.reply('hehe');
+        //res.reply('hehe');
+      res.reply(requ.wxsession.text);
     }
 })));
-app.listen(3000);
+app.listen(configs.port);
 
