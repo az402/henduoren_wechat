@@ -23,7 +23,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       res.reply('view');
     } else {
         //res.reply('hehe');
-      res.reply(requ.wxsession.text);
+      res.reply(req.wxsession.text);
     }
 })));
 app.listen(configs.port);
