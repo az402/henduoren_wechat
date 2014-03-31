@@ -22,25 +22,11 @@ var test = function(txt,res){
 }
 
 var fuck=function(txt){
-  
-  jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt,['https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js',
-            'http://drugs.dxy.cn/search/indication.htm?keyword='+txt],
-           function(errors,window){
-              var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function(){
-                console.log("fuck -",$(this).text());
-              });
-              console.log(list.length);
-              var response = new Array(list.length);
-
-              for(var i=0;i<list.length;i++){
-                console.log(list[i].text());
-                response[i]=list[i].text().split(" ")[0]; 
-                console.log(response[i]);
-              }
-
-              tmpRes.reply(response.join(' '));
-           })
-
+  jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt, [ "http://assets.dxycdn.com/core/jquery/1.7.2-min.js", "http://drugs.dxy.cn/search/indication.htm?keyword="+txt], function(errors, window) {
+      var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
+          console.log("fuck -", window.$(this).text());
+      });
+  });
 }
 
 var app = express();
@@ -70,4 +56,3 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     }
 })));
 app.listen(configs.port);
-
