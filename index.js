@@ -1,4 +1,4 @@
-var configs = require('configs.json');
+var configs = require('./configs.json');
 var wechat = require('wechat');
 var express     = require('express');
 var session = require('express-session');
