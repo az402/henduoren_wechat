@@ -29,7 +29,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       res.reply('view');
     } else {
         //res.reply('hehe');
-      test.(info.Content,res);
+      test(info.Content,res);
       //res.reply(req.wxsession.text);
     }
 })));
