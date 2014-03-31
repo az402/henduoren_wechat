@@ -13,8 +13,8 @@ var test = function(txt,res){
   request('http://drugs.dxy.cn/search/indication.htm?keyword='+txt,function(error,response,body){
     console.log(response);
     console.log(body);
-    console.log(res)
-    var $doc = $(body):
+    console.log(res);
+    var $doc = $(body);
     tmpRes.reply($doc.find("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a"))
     tmpRes.reply("222");
 
