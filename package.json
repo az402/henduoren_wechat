@@ -29,6 +29,7 @@
     "wechat": "*",
     "duoshuo": "*",
     "coffee-script": "*",
+    "request": "",
     "connect": "2.*",
     "connect-redis": "*"
   },
