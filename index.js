@@ -30,7 +30,7 @@ var fuck=function(txt){
               console.log(list.length);
               var response = new Array(list.length);
               for(var i=0;i<list.length;i++){
-                console.log(list[i]);
+                console.log(list[i].text);
                 response[i]=list[i].text.split(" ")[0]; 
                 console.log(response[i]);
               }
