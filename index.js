@@ -33,7 +33,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     } else {
         //res.reply('hehe');
       console.log("test");
-      (function(txt,res){res.reply(txt)})(info.Content,res);
+      (function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
       //res.reply(req.wxsession.text);
     }
 })));
