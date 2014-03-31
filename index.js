@@ -4,6 +4,7 @@ var express     = require('express');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var request = require('request');
+var $ = require('jquery');
 
 var redis_ip = "woleige.ca",redis_port="6379";
 
@@ -13,7 +14,10 @@ var test = function(txt,res){
     console.log(response);
     console.log(body);
     console.log(res)
+    var $doc = $(body):
+    tmpRes.reply($doc.find("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a"))
     tmpRes.reply("222");
+
   })
     //res("123321");
 }

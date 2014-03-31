@@ -29,7 +29,10 @@
     "wechat": "*",
     "duoshuo": "*",
     "coffee-script": "*",
-    "request": "",
+    "request": "*",
+    "eventproxy": "*",
+    "jquery": ">=2.1",
+    "jsdom": "latest",
     "connect": "2.*",
     "connect-redis": "*"
   },
