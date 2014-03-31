@@ -21,6 +21,14 @@ var test = function(txt,res){
     tmpRes.reply("222");
   })
 }
+var fuck = function(txt){
+
+  $.get("http://drugs.dxy.cn/search/indication.htm?keyword="+txt,function(html){
+    var $doc = $(html) ;
+    console.log("get DONE");
+  });
+
+}
 var app = express();
 app.use(express.query());
 app.use(express.cookieParser());
@@ -41,7 +49,8 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       console.log("test");
       //(function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
       tmpRes = res ;
-      test(info.Content,res);
+      fuck(info.Content);
+      //test(info.Content,res);
 
       //res.reply(req.wxsession.text);
     }
