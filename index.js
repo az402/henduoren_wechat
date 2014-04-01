@@ -29,7 +29,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       var response = "治疗"+txt+"的药物有：" ;
       jsdom.env(dxy_url+txt, [ jquery_url, dxy_url+txt], function(errors, window) {
         console.log("querying "+info.Content)
-        var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
+        window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
           response+=window.$(this).text().replace(/\s/g,"");
           response+="\r\n";
         });
