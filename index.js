@@ -25,6 +25,9 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
   var last_query = session.last || "" ;
   var last_query_list = session.last_list || [] ;
 
+  console.log(last_query);
+  console.log(last_query_list);
+
   if (info.Content === 'list') {
     req.wxsession.text = 'sucess';
     res.reply('view');
@@ -48,7 +51,8 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       response = list.length!=0?response+list.join("\r\n")+"\r\n回复数字查询药价。":"对不起未查询到治疗"+info.Content+"症状的药品。";
 
       session.last_query = info.Content;
-      session.last_query_list = list ;
+      session.last_query_list.push(list);
+
       res.reply(response);
       console.log("reply "+response)
     });
