@@ -40,7 +40,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     res.reply(response);
   }else if(last_query_list[info.Content-1]){
     var query_name = last_query_list[info.Content-1];
-    var response = "你查询治疗 "+last_query+" 症状的药品『"+query_name+"』的价格为xx.xx元/盒。 ";
+    var response = "您查询治疗 "+last_query+" 症状的药品『"+query_name+"』的价格为xx.xx元/盒。\r\n如果您需要免费送药服务，请发送您的地址信息。 ";
     console.log(response);
     res.reply(response);
   }else {
