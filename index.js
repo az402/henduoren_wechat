@@ -42,7 +42,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     var query_name = last_query_list[info.Content-1];
     var response = "你查询治疗 "+last_query+" 症状的药品『"+query_name+"』的价格为xx.xx元/盒。 ";
     console.log(response);
-    res.reply(response):
+    res.reply(response);
   }else {
     console.log("query dxy "+info.Content);
     var response = "治疗"+info.Content+"的药物有：\r\n" ;
