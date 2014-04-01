@@ -33,8 +33,8 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
           response+=window.$(this).text().replace(/\s/g,"");
           response+="\r\n";
         });
+        console.log("reply "+response)
       });
-      console.log("reply "+response)
       res.reply(response);
     }
   }
