@@ -33,7 +33,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
         var list = new Array(tmplist.length);
         var i = 0 ;
         tmplist.each(function() {
-          list[i++]="1."+window.$(this).text().replace(/\s/g,"");
+          list[i++]=i+"."+window.$(this).text().replace(/\s/g,"");
           //response+=
           //response+="\r\n";
         });
