@@ -6,30 +6,8 @@ var RedisStore = require('connect-redis')(session);
 var request = require('request');
 var jsdom = require("jsdom");
 var redis_ip = "woleige.ca",redis_port="6379";
-
-var tmpRes = "";
-var test = function(txt,res){
-  request('http://drugs.dxy.cn/search/indication.htm?keyword='+txt,function(error,response,body){
-    var $doc = $(body);
-    console.log("$body done")
-    var test = $doc.find("body");
-    console.log(test)
-    var results = $doc.find("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
-    console.log(results);
-    tmpRes.reply("222");
-  })
-}
-
-var fuck=function(txt,res){
-  jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt, [ "http://assets.dxycdn.com/core/jquery/1.7.2-min.js", "http://drugs.dxy.cn/search/indication.htm?keyword="+txt], function(errors, window) {
-      var response = "治疗"+txt+"的药物有：" ;
-      var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
-          response+=window.$(this).text().replace(/\s/g,"");
-          response+="\r\n";
-      });
-      res.reply(response);
-  });
-}
+var dxy_url = "http://drugs.dxy.cn/search/indication.htm?keyword=";
+var jquer_url = "http://assets.dxycdn.com/core/jquery/1.7.2-min.js";
 
 var app = express();
 app.use(express.query());
@@ -47,14 +25,16 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       req.wxsession.text = 'sucess';
       res.reply('view');
     } else {
-        //res.reply('hehe');
-      console.log("test");
-      //(function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
-      tmpRes = res ;
-      fuck(info.Content,res);
-      //test(info.Content,res);
+        jsdom.env(dxy_url+txt, [ jquery_url, dxy_url+txt], function(errors, window) {
+        var response = "治疗"+txt+"的药物有：" ;
+        var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
+          response+=window.$(this).text().replace(/\s/g,"");
+          response+="\r\n";
+      });
+      res.reply(response);
+        });
+  };
+}
 
-      //res.reply(req.wxsession.text);
-    }
-})));
+)));
 app.listen(configs.port);
