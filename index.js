@@ -21,7 +21,7 @@ app.use(express.session({
   }),
 }));
 app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, next) {
-  console.log(req.wxsession.text);
+  console.log(req.wxsession.texti);
   if (info.Content === 'list') {
     req.wxsession.text = 'sucess';
     res.reply('view');
@@ -37,8 +37,8 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
         list[i++]=(i+"."+window.$(this).text().replace(/\s/g,"")).split("-")[0];
       });
       response = list.length!=0?response+list.join("\r\n")+"\r\n回复数字查询药价。":"对不起未查询到治疗"+info.Content+"症状的药品。";
-      req.wxsession.text = [];
-      req.wxsession.text.push(info.Content);
+      req.wxsession.texti = [];
+      req.wxsession.texti.push(info.Content);
       res.reply(response);
       console.log("reply "+response)
     });
