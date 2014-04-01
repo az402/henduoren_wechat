@@ -33,8 +33,9 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
           response+=window.$(this).text().replace(/\s/g,"");
           response+="\r\n";
         });
+      });
       res.reply(response);
-    });
+    }
   }
-})));
+)));
 app.listen(configs.port);
