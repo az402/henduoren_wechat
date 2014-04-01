@@ -20,14 +20,14 @@ var test = function(txt,res){
   })
 }
 
-var fuck=function(txt){
+var fuck=function(txt,res){
   jsdom.env("http://drugs.dxy.cn/search/indication.htm?keyword="+txt, [ "http://assets.dxycdn.com/core/jquery/1.7.2-min.js", "http://drugs.dxy.cn/search/indication.htm?keyword="+txt], function(errors, window) {
-      var response = "治疗"+txt+"的药物有1：" ;
+      var response = "治疗"+txt+"的药物有：" ;
       var list = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a").each(function() {
           response+=window.$(this).text().replace(/\s/g,"");
           response+="\r\n";
       });
-      tmpRes.reply(response);
+      res.reply(response);
   });
 }
 
@@ -51,7 +51,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       console.log("test");
       //(function(txt,res){console.log("123");res.reply(txt)})(info.Content,res);
       tmpRes = res ;
-      fuck(info.Content);
+      fuck(info.Content,res);
       //test(info.Content,res);
 
       //res.reply(req.wxsession.text);
