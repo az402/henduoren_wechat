@@ -32,7 +32,9 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
     req.wxsession.text = 'sucess';
     res.reply('view');
   }else if(info.Content === last_query){
+    console.log("match last_query");
     var response = list.length!=0?response+list.join("\r\n")+"\r\n回复数字查询药价。":"对不起未查询到治疗"+info.Content+"症状的药品。";
+    console.log(response);
     res.reply(response);
   }else if(last_query_list[info.Content-1]){
     console.log("bingo!")
