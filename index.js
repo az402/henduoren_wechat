@@ -53,7 +53,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       console.log(response);
 
       session.last = info.Content;
-      session.last_list.push(list);
+      session.last_list=list;
 
       res.reply(response);
       console.log("reply "+response)
