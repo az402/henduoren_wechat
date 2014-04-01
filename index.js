@@ -7,7 +7,7 @@ var request = require('request');
 var jsdom = require("jsdom");
 var redis_ip = "woleige.ca",redis_port="6379";
 var dxy_url = "http://drugs.dxy.cn/search/indication.htm?keyword=";
-var jquer_url = "http://assets.dxycdn.com/core/jquery/1.7.2-min.js";
+var jquery_url = "http://assets.dxycdn.com/core/jquery/1.7.2-min.js";
 
 var app = express();
 app.use(express.query());
