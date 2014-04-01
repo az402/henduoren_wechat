@@ -35,7 +35,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       tmplist.each(function() {
         list[i++]=(i+"."+window.$(this).text().replace(/\s/g,"")).split("-")[0];
       });
-      response = list.length!=0?response+list.join("\r\n"):"对不起未查询到治疗"+info.Content+"症状的药品。";
+      response = list.length!=0?response+list.join("\r\n")+"回复数字查询药价。":"对不起未查询到治疗"+info.Content+"症状的药品。";
 
       res.reply(response);
       console.log("reply "+response)
