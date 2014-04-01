@@ -26,18 +26,18 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       res.reply('view');
     } else {
       console.log("query dxy "+info.Content);
-      var response = "治疗"+info.Content+"的药物有：" ;
+      var response = "治疗"+info.Content+"的药物有：\r\n" ;
       jsdom.env(dxy_url+info.Content,[jquery_url,dxy_url+info.Content],function(errors, window) {
         console.log("querying "+info.Content)
         var tmplist = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
         var list = new Array(tmplist.length);
         var i = 0 ;
         tmplist.each(function() {
-          list[i++]=window.$(this).text().replace(/\s/g,"");
+          list[i++]="1."+window.$(this).text().replace(/\s/g,"");
           //response+=
           //response+="\r\n";
         });
-        response = list.join("\r\n");
+        response += list.join("\r\n");
         res.reply(response);
         console.log("reply "+response)
       });
