@@ -22,27 +22,25 @@ app.use(express.session({
 }));
 app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, next) {
   if (info.Content === 'list') {
-      req.wxsession.text = 'sucess';
-      res.reply('view');
-    } else {
-      console.log("query dxy "+info.Content);
-      var response = "治疗"+info.Content+"的药物有：\r\n" ;
-      jsdom.env(dxy_url+info.Content,[jquery_url,dxy_url+info.Content],function(errors, window) {
-        console.log("querying "+info.Content)
-        var tmplist = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
-        var list = new Array(tmplist.length);
-        var i = 0 ;
-        tmplist.each(function() {
-          list[i++]=i+"."+window.$(this).text().replace(/\s/g,"");
-          //response+=
-          //response+="\r\n";
-        });
-        response = list.length!=0?response+list.join("\r\n"):"对不起未查询到治疗"+info.Content+"症状的药品。";
-
-        res.reply(response);
-        console.log("reply "+response)
+    req.wxsession.text = 'sucess';
+    res.reply('view');
+  } else {
+    console.log("query dxy "+info.Content);
+    var response = "治疗"+info.Content+"的药物有：\r\n" ;
+    jsdom.env(dxy_url+info.Content,[jquery_url,dxy_url+info.Content],function(errors, window) {
+      console.log("querying "+info.Content)
+      var tmplist = window.$("body #page #container .common_bd .common_mainwrap .common_main .result .list .fl h3 a");
+      var list = new Array(tmplist.length);
+      var i = 0 ;
+      tmplist.each(function() {
+        list[i++]=(i+"."+window.$(this).text().replace(/\s/g,"")).split("-")[0];
       });
-    }
+      response = list.length!=0?response+list.join("\r\n"):"对不起未查询到治疗"+info.Content+"症状的药品。";
+
+      res.reply(response);
+      console.log("reply "+response)
+    });
   }
-)));
+})));
+
 app.listen(configs.port);
