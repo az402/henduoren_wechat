@@ -38,6 +38,7 @@ app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, n
       });
       response = list.length!=0?response+list.join("\r\n")+"\r\n回复数字查询药价。":"对不起未查询到治疗"+info.Content+"症状的药品。";
       req.wxsession.text = info.Content;
+      req.wxsession.text.push(list);
       res.reply(response);
       console.log("reply "+response)
     });
