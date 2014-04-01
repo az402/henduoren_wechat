@@ -22,8 +22,8 @@ app.use(express.session({
 }));
 app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, next) {
   var session = req.wxsession ;
-  var last_query = session.last ;
-  var last_query_list = session.last_list ;
+  var last_query = session.last || "" ;
+  var last_query_list = session.last_list || [] ;
 
   if (info.Content === 'list') {
     req.wxsession.text = 'sucess';
