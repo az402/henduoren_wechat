@@ -5,7 +5,6 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var request = require('request');
 var jsdom = require("jsdom");
-var redis_ip = "woleige.ca",redis_port="6379";
 var dxy_url = "http://drugs.dxy.cn/search/indication.htm?keyword=";
 var jquery_url = "http://assets.dxycdn.com/core/jquery/1.7.2-min.js";
 
@@ -16,8 +15,8 @@ app.use(express.session({
   secret: 'wefew',
   cookie: {maxAge: 60000},
   store: new RedisStore({
-    host: redis_ip,
-    port: redis_port
+    host: configs.redis_ip,
+    port: cnnfigs.redis_port
   }),
 }));
 app.use('/wechat', wechat(configs.token, wechat.text(function (info, req, res, next) {

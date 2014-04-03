@@ -1,4 +1,6 @@
 {
   "token": "",
-  "port": ""
+  "port": "",
+  "redis_ip": "",
+  "reids_port": ""
 }
